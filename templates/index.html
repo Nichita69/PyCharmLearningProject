@@ -1,28 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="ro">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Convertor Text în Vorbit</title>
+    <style>
+        body.light-theme {
+            background-color: #c0c0c0;
+        }
+        body.dark-theme {
+            background-color: #131415;
+        }
+        .glassmorphic-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 500px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #ffffff;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+        }
+        input, textarea, select, button {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            color: #fff;
+            background-color: #4a76a8;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #395c75;
+        }
+        label {
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+    </style>
 </head>
-<body>
-    <h1>Convertor Text în Vorbit</h1>
-    <form method="post" action="/convert">
-        <label for="text">Introduceți textul:</label><br>
-        <textarea name="text" id="text" rows="4" cols="50"></textarea><br>
-
-        <label for="voice">Selectați vocea:</label><br>
-        <select name="voice" id="voice">
-            <option value="alloy">aliaj</option>
-            <option value="echo">ecou</option>
-            <option value="fable">fabulă</option>
-            <option value="onyx">onix</option>
-            <option value="nova">novă</option>
-            <option value="shimmer">strălucire</option>
-        </select><br>
-
-        <label for="speed">Viteza de redare:</label><br>
-        <input type="number" id="speed" name="speed" min="0.25" max="4.0" step="0.25" value="1.0"><br>
-
-        <input type="submit" value="Convertiți și salvați">
-    </form>
+<body class="light-theme">
+    <div class="glassmorphic-card">
+        <h2 class="text-center mb-4">Convertor Text în Vorbit</h2>
+        <form method="post" action="/convert">
+            <div class="form-group">
+                <label for="text">Introduceți textul:</label>
+                <textarea name="text" id="text" rows="4"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="voice">Selectați vocea:</label>
+                <select name="voice" id="voice">
+                    <option value="alloy">aliaj</option>
+                    <option value="echo">ecou</option>
+                    <option value="fable">fabulă</option>
+                    <option value="onyx">onix</option>
+                    <option value="nova">novă</option>
+                    <option value="shimmer">strălucire</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="speed">Viteza de redare:</label>
+                <input type="number" id="speed" name="speed" min="0.25" max="4.0" step="0.25" value="1.0">
+            </div>
+            <button type="submit">Convertiți și salvați</button>
+        </form>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()">Schimbă Tema</button>
+    <script>
+        function toggleTheme() {
+            var body = document.body;
+            if (body.classList.contains('light-theme')) {
+                body.classList.replace('light-theme', 'dark-theme');
+            } else {
+                body.classList.replace('dark-theme', 'light-theme');
+            }
+        }
+    </script>
 </body>
 </html>

@@ -33,4 +33,5 @@ def convert_text_to_speech_openai(text, voice, speed):
         return None
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Запуск приложения для публичного доступа и отключение режима отладки
+    app.run(host='0.0.0.0', port=5000, debug=False)
