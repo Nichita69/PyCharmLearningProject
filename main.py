@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 app = Flask(__name__)
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = ''
 static_folder_path = 'static'
 client_id = "1c3d92ba1ca3221409523f03fa392b09"
 client_secret = "905771cedc24d37bdfc12c24ccb6a700"
